@@ -1,6 +1,6 @@
-package ru.javaops.topjava.common.error;
+package graduation.lunchvote.common.error;
 
-import static ru.javaops.topjava.common.error.ErrorType.BAD_REQUEST;
+import static graduation.lunchvote.common.error.ErrorType.BAD_REQUEST;
 
 public class IllegalRequestDataException extends AppException {
     public IllegalRequestDataException(String msg) {

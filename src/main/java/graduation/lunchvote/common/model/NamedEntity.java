@@ -1,4 +1,4 @@
-package ru.javaops.topjava.common.model;
+package graduation.lunchvote.common.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -8,7 +8,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.javaops.topjava.common.validation.NoHtml;
+import graduation.lunchvote.common.validation.NoHtml;
 
 
 @MappedSuperclass

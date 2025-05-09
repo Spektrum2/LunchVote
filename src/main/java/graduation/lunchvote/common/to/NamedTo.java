@@ -1,10 +1,10 @@
-package ru.javaops.topjava.common.to;
+package graduation.lunchvote.common.to;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import ru.javaops.topjava.common.validation.NoHtml;
+import graduation.lunchvote.common.validation.NoHtml;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

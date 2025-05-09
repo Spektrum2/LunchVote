@@ -1,17 +1,20 @@
-package ru.javaops.topjava.user.web;
+package graduation.lunchvote.user.web;
 
+import graduation.lunchvote.user.model.User;
+import graduation.lunchvote.user.repository.UserRepository;
+import graduation.lunchvote.user.service.UserService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import ru.javaops.topjava.user.model.User;
-import ru.javaops.topjava.user.repository.UserRepository;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
 public abstract class AbstractUserController {
     protected final Logger log = getLogger(getClass());
+
+    @Autowired
+    protected UserService userService;
 
     @Autowired
     protected UserRepository repository;
@@ -32,10 +35,5 @@ public abstract class AbstractUserController {
     public void delete(int id) {
         log.info("delete {}", id);
         repository.deleteExisted(id);
-    }
-
-    public ResponseEntity<User> getWithMeals(int id) {
-        log.info("getWithMeals {}", id);
-        return ResponseEntity.of(repository.getWithMeals(id));
     }
 }

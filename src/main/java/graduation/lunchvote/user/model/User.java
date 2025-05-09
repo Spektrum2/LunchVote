@@ -1,6 +1,10 @@
-package ru.javaops.bootjava.user.model;
+package graduation.lunchvote.user.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import graduation.lunchvote.common.HasIdAndEmail;
+import graduation.lunchvote.common.model.NamedEntity;
+import graduation.lunchvote.common.validation.NoHtml;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -10,10 +14,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.lang.NonNull;
-import ru.javaops.bootjava.common.HasIdAndEmail;
-import ru.javaops.bootjava.common.model.NamedEntity;
-import ru.javaops.bootjava.common.validation.NoHtml;
 
 import java.util.*;
 
@@ -23,19 +26,17 @@ import java.util.*;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends NamedEntity implements HasIdAndEmail {
-// No session, no needs Serializable
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
     @Size(max = 64)
-    @NoHtml   // https://stackoverflow.com/questions/17480809
+    @NoHtml
     private String email;
 
     @Column(name = "password", nullable = false)
     @NotBlank
     @Size(max = 128)
-    // https://stackoverflow.com/a/12505165/548473
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
@@ -54,6 +55,11 @@ public class User extends NamedEntity implements HasIdAndEmail {
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles = EnumSet.noneOf(Role.class);
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private List<Vote> votes;
 
     public User(User u) {
         this(u.id, u.name, u.email, u.password, u.enabled, u.registered, u.roles);

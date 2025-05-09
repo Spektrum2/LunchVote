@@ -1,4 +1,4 @@
-package ru.javaops.topjava.app;
+package graduation.lunchvote.app;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

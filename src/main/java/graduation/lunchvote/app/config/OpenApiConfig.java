@@ -1,4 +1,4 @@
-package ru.javaops.topjava.app.config;
+package graduation.lunchvote.app.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -21,16 +21,15 @@ public class OpenApiConfig {
                         .title("Документация REST API")
                         .version("1.0")
                         .description("""
-                                Spring Boot миграция для <a href='https://javaops.ru/view/topjava'>TopJava приложения</a>
                                 <p><b>Тестовые учетные данные:</b><br>
                                 - user@yandex.ru / password<br>
                                 - admin@gmail.com / admin<br>
-                                - guest@gmail.com / guest</p>
+                                - guest@gmail.com / guest<br>
+                                - user@ya.ru / pass</p>
                                 """)
                         .contact(new Contact()
-                                .name("Григорий Кислин")
-                                .url("https://javaops.ru/#contacts")
-                                .email("admin@javaops.ru")))
+                                .name("Ботурлов Александр")
+                                .email("promitay@gmail.com")))
                 .addSecurityItem(new SecurityRequirement().addList("basicAuth"))
                 .components(new Components()
                         .addSecuritySchemes("basicAuth", new SecurityScheme()

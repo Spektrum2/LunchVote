@@ -1,6 +1,6 @@
-package ru.javaops.topjava.common.error;
+package graduation.lunchvote.common.error;
 
-import static ru.javaops.topjava.common.error.ErrorType.DATA_CONFLICT;
+import static graduation.lunchvote.common.error.ErrorType.DATA_CONFLICT;
 
 public class DataConflictException extends AppException {
     public DataConflictException(String msg) {

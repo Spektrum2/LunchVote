@@ -1,4 +1,4 @@
-package ru.javaops.topjava.common;
+package graduation.lunchvote.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.util.Assert;

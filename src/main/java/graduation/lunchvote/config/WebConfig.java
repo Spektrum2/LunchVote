@@ -1,4 +1,4 @@
-package ru.javaops.bootjava.config;
+package graduation.lunchvote.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

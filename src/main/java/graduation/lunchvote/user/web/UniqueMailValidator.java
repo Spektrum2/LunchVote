@@ -1,4 +1,4 @@
-package ru.javaops.topjava.user.web;
+package graduation.lunchvote.user.web;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
@@ -6,9 +6,9 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
-import ru.javaops.topjava.app.AuthUtil;
-import ru.javaops.topjava.common.HasIdAndEmail;
-import ru.javaops.topjava.user.repository.UserRepository;
+import graduation.lunchvote.app.AuthUtil;
+import graduation.lunchvote.common.HasIdAndEmail;
+import graduation.lunchvote.user.repository.UserRepository;
 
 @Component
 @AllArgsConstructor

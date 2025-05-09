@@ -1,4 +1,8 @@
 package graduation.lunchvote.user.repository;
 
-public interface RestaurantRepository {
+import graduation.lunchvote.common.BaseRepository;
+import graduation.lunchvote.user.model.Restaurant;
+
+public interface RestaurantRepository extends BaseRepository<Restaurant> {
+
 }

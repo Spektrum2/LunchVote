@@ -1,4 +1,4 @@
-package ru.javaops.topjava.user.web;
+package graduation.lunchvote.user.web;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -9,20 +9,17 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.javaops.topjava.app.AuthUser;
-import ru.javaops.topjava.user.model.User;
-import ru.javaops.topjava.user.to.UserTo;
-import ru.javaops.topjava.user.util.UsersUtil;
+import graduation.lunchvote.app.AuthUser;
+import graduation.lunchvote.user.model.User;
 
 import java.net.URI;
 
-import static ru.javaops.topjava.common.validation.ValidationUtil.assureIdConsistent;
-import static ru.javaops.topjava.common.validation.ValidationUtil.checkIsNew;
+import static graduation.lunchvote.common.validation.ValidationUtil.assureIdConsistent;
+import static graduation.lunchvote.common.validation.ValidationUtil.checkIsNew;
 
 @RestController
 @RequestMapping(value = ProfileController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
-// TODO: cache only most requested data!
 public class ProfileController extends AbstractUserController {
     static final String REST_URL = "/api/profile";
 
@@ -40,10 +37,10 @@ public class ProfileController extends AbstractUserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<User> register(@Valid @RequestBody UserTo userTo) {
-        log.info("register {}", userTo);
-        checkIsNew(userTo);
-        User created = repository.prepareAndSave(UsersUtil.createNewFromTo(userTo));
+    public ResponseEntity<User> register(@Valid @RequestBody User user) {
+        log.info("register {}", user);
+        checkIsNew(user);
+        User created = userService.prepareAndSave(user);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL).build().toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
@@ -52,15 +49,9 @@ public class ProfileController extends AbstractUserController {
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Transactional
-    public void update(@RequestBody @Valid UserTo userTo, @AuthenticationPrincipal AuthUser authUser) {
-        log.info("update {} with id={}", userTo, authUser.id());
-        assureIdConsistent(userTo, authUser.id());
-        User user = authUser.getUser();
-        repository.prepareAndSave(UsersUtil.updateFromTo(user, userTo));
-    }
-
-    @GetMapping("/with-meals")
-    public ResponseEntity<User> getWithMeals(@AuthenticationPrincipal AuthUser authUser) {
-        return super.getWithMeals(authUser.id());
+    public void update(@RequestBody @Valid User user, @AuthenticationPrincipal AuthUser authUser) {
+        log.info("update {} with id={}", user, authUser.id());
+        assureIdConsistent(user, authUser.id());
+        userService.prepareAndSave(authUser.getUser());
     }
 }

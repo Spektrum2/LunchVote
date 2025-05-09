@@ -1,4 +1,4 @@
-package org.example.lunchvote;
+package graduation.lunchvote;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

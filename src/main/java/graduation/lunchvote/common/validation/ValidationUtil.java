@@ -1,8 +1,8 @@
-package ru.javaops.topjava.common.validation;
+package graduation.lunchvote.common.validation;
 
 import lombok.experimental.UtilityClass;
-import ru.javaops.topjava.common.HasId;
-import ru.javaops.topjava.common.error.IllegalRequestDataException;
+import graduation.lunchvote.common.HasId;
+import graduation.lunchvote.common.error.IllegalRequestDataException;
 
 @UtilityClass
 public class ValidationUtil {
@@ -13,7 +13,6 @@ public class ValidationUtil {
         }
     }
 
-    //  Conservative when you reply, but accept liberally (http://stackoverflow.com/a/32728226/548473)
     public static void assureIdConsistent(HasId bean, int id) {
         if (bean.isNew()) {
             bean.setId(id);

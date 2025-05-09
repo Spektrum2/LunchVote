@@ -1,9 +1,9 @@
-package ru.javaops.topjava.app;
+package graduation.lunchvote.app;
 
+import graduation.lunchvote.user.model.Role;
+import graduation.lunchvote.user.model.User;
 import lombok.Getter;
 import org.springframework.lang.NonNull;
-import ru.javaops.topjava.user.model.Role;
-import ru.javaops.topjava.user.model.User;
 
 public class AuthUser extends org.springframework.security.core.userdetails.User {
 

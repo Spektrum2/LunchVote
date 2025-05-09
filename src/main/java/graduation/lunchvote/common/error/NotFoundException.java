@@ -1,6 +1,6 @@
-package ru.javaops.topjava.common.error;
+package graduation.lunchvote.common.error;
 
-import static ru.javaops.topjava.common.error.ErrorType.NOT_FOUND;
+import static graduation.lunchvote.common.error.ErrorType.NOT_FOUND;
 
 public class NotFoundException extends AppException {
     public NotFoundException(String msg) {

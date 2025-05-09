@@ -1,4 +1,4 @@
-package ru.javaops.topjava.common.error;
+package graduation.lunchvote.common.error;
 
 import org.springframework.http.HttpStatus;
 

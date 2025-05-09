@@ -1,5 +1,7 @@
-package ru.javaops.topjava.app.config;
+package graduation.lunchvote.app.config;
 
+import graduation.lunchvote.common.error.AppException;
+import graduation.lunchvote.common.error.ErrorType;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ValidationException;
@@ -25,8 +27,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
-import ru.javaops.topjava.common.error.AppException;
-import ru.javaops.topjava.common.error.ErrorType;
 
 import java.io.FileNotFoundException;
 import java.net.URI;
@@ -35,7 +35,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static ru.javaops.topjava.common.error.ErrorType.*;
+import static graduation.lunchvote.common.error.ErrorType.*;
 
 @RestControllerAdvice
 @AllArgsConstructor
@@ -46,7 +46,6 @@ public class RestExceptionHandler {
     @Getter
     private final MessageSource messageSource;
 
-    //    https://stackoverflow.com/a/52254601/548473
     static final Map<Class<? extends Throwable>, ErrorType> HTTP_STATUS_MAP = new LinkedHashMap<>() {
         {
 // more specific first

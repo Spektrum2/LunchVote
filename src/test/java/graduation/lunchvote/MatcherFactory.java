@@ -1,9 +1,9 @@
-package ru.javaops.topjava;
+package graduation.lunchvote;
 
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
-import ru.javaops.topjava.common.util.JsonUtil;
+import graduation.lunchvote.common.util.JsonUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;

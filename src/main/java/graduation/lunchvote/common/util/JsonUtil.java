@@ -1,7 +1,8 @@
-package ru.javaops.topjava.common.util;
+package graduation.lunchvote.common.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import lombok.experimental.UtilityClass;
@@ -29,6 +30,7 @@ public class JsonUtil {
 
     public static <T> T readValue(String json, Class<T> clazz) {
         try {
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             return mapper.readValue(json, clazz);
         } catch (IOException e) {
             throw new IllegalArgumentException("Invalid read from JSON:\n'" + json + "'", e);
@@ -48,7 +50,8 @@ public class JsonUtil {
     }
 
     public static <T> String writeAdditionProps(T obj, Map<String, Object> addProps) {
-        Map<String, Object> map = mapper.convertValue(obj, new TypeReference<>() {});
+        Map<String, Object> map = mapper.convertValue(obj, new TypeReference<>() {
+        });
         map.putAll(addProps);
         return writeValue(map);
     }

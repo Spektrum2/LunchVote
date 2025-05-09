@@ -1,4 +1,4 @@
-package ru.javaops.topjava.common.validation;
+package graduation.lunchvote.common.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
