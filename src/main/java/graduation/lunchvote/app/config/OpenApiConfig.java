@@ -1,0 +1,49 @@
+package ru.javaops.topjava.app.config;
+
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import org.springdoc.core.models.GroupedOpenApi;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenApiConfig {
+
+    @Bean
+    public OpenAPI customOpenAPI() {
+
+        return new OpenAPI()
+                .info(new Info()
+                        .title("Документация REST API")
+                        .version("1.0")
+                        .description("""
+                                Spring Boot миграция для <a href='https://javaops.ru/view/topjava'>TopJava приложения</a>
+                                <p><b>Тестовые учетные данные:</b><br>
+                                - user@yandex.ru / password<br>
+                                - admin@gmail.com / admin<br>
+                                - guest@gmail.com / guest</p>
+                                """)
+                        .contact(new Contact()
+                                .name("Григорий Кислин")
+                                .url("https://javaops.ru/#contacts")
+                                .email("admin@javaops.ru")))
+                .addSecurityItem(new SecurityRequirement().addList("basicAuth"))
+                .components(new Components()
+                        .addSecuritySchemes("basicAuth", new SecurityScheme()
+                                .name("basicAuth")
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme("basic")));
+    }
+
+    @Bean
+    public GroupedOpenApi api() {
+        return GroupedOpenApi.builder()
+                .group("REST API")
+                .pathsToMatch("/api/**")
+                .build();
+    }
+}
