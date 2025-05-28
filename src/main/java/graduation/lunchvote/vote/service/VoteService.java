@@ -68,7 +68,7 @@ public class VoteService {
      * @throws NotFoundException           if no vote exists for today or restaurant is not found
      */
     @Transactional
-    @CacheEvict(value = "votingResults", key = "#result?.date?.toString()")
+    @CacheEvict(value = "votingResults", key = "T(java.time.LocalDate).now().toString()")
     public void update(Integer userId, Integer restaurantId) {
         final LocalDateTime currentMoment = LocalDateTime.now();
         final LocalDate currentDate = currentMoment.toLocalDate();
