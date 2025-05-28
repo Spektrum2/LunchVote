@@ -16,16 +16,16 @@ spring:
         jdbc.batch_size: 20
   datasource:
     # ImMemory
-    url: jdbc:h2:mem:topjava
-    #    tcp: jdbc:h2:tcp://localhost:9092/mem:topjava
+    url: jdbc:h2:mem:lunchvote
+    #    tcp: jdbc:h2:tcp://localhost:9092/mem:lunchvote
     # Absolute path
-    #    url: jdbc:h2:C:/projects/bootjava/db/topjava
-    #    tcp: jdbc:h2:tcp://localhost:9092/C:/projects/bootjava/db/topjava
+    #    url: jdbc:h2:C:/projects/bootjava/db/lunchvote
+    #    tcp: jdbc:h2:tcp://localhost:9092/C:/projects/bootjava/db/lunchvote
     # Relative path form current dir
-    #    url: jdbc:h2:./db/topjava
+    #    url: jdbc:h2:./db/lunchvote
     # Relative path from home
-    #    url: jdbc:h2:~/topjava
-    #    tcp: jdbc:h2:tcp://localhost:9092/~/topjava
+    #    url: jdbc:h2:~/lunchvote
+    #    tcp: jdbc:h2:tcp://localhost:9092/~/lunchvote
     username: sa
     password:
 
