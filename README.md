@@ -25,3 +25,8 @@ LunchVote is a REST API for voting on where to have lunch today. The project is 
 - **Java 11+**
 - **Maven 3.6+** (or another build system)
 - DBMS – **H2** is used by default for development
+
+## Swagger API Documentation
+
+Access the interactive Swagger API documentation here:
+[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)

@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 
 @RestController
-@RequestMapping(value = MenuAdminController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = AdminMenuController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
-public class MenuAdminController {
+public class AdminMenuController {
 
     static final String REST_URL = "/api/admin/menus";
 
     private final MenuService menuService;
 
-    public MenuAdminController(MenuService menuService) {
+    public AdminMenuController(MenuService menuService) {
         this.menuService = menuService;
     }
 

@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static graduation.lunchvote.restaurant.RestaurantTestData.*;
 import static graduation.lunchvote.restaurant.RestaurantTestData.RESTAURANT1_ID;
 import static graduation.lunchvote.user.UserTestData.ADMIN_MAIL;
-import static graduation.lunchvote.restaurant.web.RestaurantAdminController.REST_URL;
+import static graduation.lunchvote.restaurant.web.AdminRestaurantController.REST_URL;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

@@ -10,12 +10,9 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Embeddable
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Data
 public class MenuItem {
 
     @Column(name = "dish_name", nullable = false)

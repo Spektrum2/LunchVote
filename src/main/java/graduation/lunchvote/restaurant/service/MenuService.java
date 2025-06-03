@@ -42,7 +42,7 @@ public class MenuService {
      * @param date the date for which to retrieve menus
      * @return a list of {@link Menu} objects corresponding to the specified date
      */
-    @Cacheable(value = "menus", key = "#date.toString()")
+    @Cacheable(value = "menus", key = "#date")
     public List<Menu> getMenusForDate(LocalDate date) {
         return menuRepository.findAllByDate(date);
     }
@@ -57,7 +57,7 @@ public class MenuService {
      * @throws NotFoundException if no restaurant with the specified ID is found
      */
     @Transactional
-    @CacheEvict(value = "menus", key = "#date.toString()")
+    @CacheEvict(value = "menus", key = "#date")
     public Menu createOrUpdate(Integer restaurantId, LocalDate date, List<MenuItem> items) {
         Restaurant restaurant = restaurantRepository.getExisted(restaurantId);
 

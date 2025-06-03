@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 import static graduation.lunchvote.restaurant.MenuTestData.*;
 import static graduation.lunchvote.restaurant.RestaurantTestData.RESTAURANT1_ID;
 import static graduation.lunchvote.user.UserTestData.ADMIN_MAIL;
-import static graduation.lunchvote.restaurant.web.MenuAdminController.REST_URL;
+import static graduation.lunchvote.restaurant.web.AdminMenuController.REST_URL;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class MenuAdminControllerTest extends AbstractControllerTest {

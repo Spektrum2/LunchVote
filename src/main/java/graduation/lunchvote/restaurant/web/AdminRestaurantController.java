@@ -1,7 +1,6 @@
 package graduation.lunchvote.restaurant.web;
 
 import graduation.lunchvote.restaurant.model.Restaurant;
-import graduation.lunchvote.restaurant.repository.RestaurantRepository;
 import graduation.lunchvote.restaurant.service.RestaurantService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -17,19 +16,16 @@ import static graduation.lunchvote.common.validation.ValidationUtil.assureIdCons
 import static graduation.lunchvote.common.validation.ValidationUtil.checkIsNew;
 
 @RestController
-@RequestMapping(value = RestaurantAdminController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = AdminRestaurantController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
-public class RestaurantAdminController {
+public class AdminRestaurantController {
 
     static final String REST_URL = "/api/admin/restaurants";
 
     private final RestaurantService restaurantService;
 
-    private final RestaurantRepository restaurantRepository;
-
-    public RestaurantAdminController(RestaurantService restaurantService, RestaurantRepository restaurantRepository) {
+    public AdminRestaurantController(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;
-        this.restaurantRepository = restaurantRepository;
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -48,7 +44,7 @@ public class RestaurantAdminController {
     public void update(@PathVariable int id, @Valid @RequestBody Restaurant restaurant) {
         log.info("Update restaurant with id {}", id);
         assureIdConsistent(restaurant, id);
-        restaurantRepository.getExisted(restaurant.getId());
+        restaurantService.get(restaurant.getId());
         restaurantService.save(restaurant);
     }
 
